@@ -25,8 +25,8 @@ export const PosterContainer = styled.div`
     }
 `;
 
-// export const Poster = styled(Image)`
-//   object-fit: cover;
-//   transition: transform 0.55s ease;
-//   cursor: pointer;
-// `;
+export const Poster = styled(Image)`
+  object-fit: cover;
+  transition: transform 0.55s ease;
+  cursor: pointer;
+`;

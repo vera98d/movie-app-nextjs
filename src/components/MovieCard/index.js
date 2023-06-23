@@ -1,7 +1,6 @@
 import { PosterContainer, Poster } from "./styles";
 import { StyledRouterLink } from "../GlobalComponents/styles";
 import { links } from "../../services/ApiEndpointConfig";
-import Image from 'next/image';
 
 const MovieCard = ({ imgPath, title, movieId }) => {
 
@@ -11,7 +10,7 @@ const MovieCard = ({ imgPath, title, movieId }) => {
     return (
         <StyledRouterLink href={`movies/${movieId}`} >
             <PosterContainer>
-                <Image
+                <Poster
                     src={imgUrl}
                     alt={PosterAltText}
                     layout='fill'
