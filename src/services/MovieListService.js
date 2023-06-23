@@ -21,7 +21,7 @@ class MovieListService {
     }
 
     getOriginalPosterByMovieId = (movieId) => {
-        return `https://image.tmdb.org/t/p/original${movieId}`;
+        return `https://image.tmdb.org/t/p/original/${movieId}`;
     }
 
     getMovieDetails = async (movieId) => {
