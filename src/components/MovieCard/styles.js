@@ -12,6 +12,12 @@ export const PosterContainer = styled.div`
     transform: scale(1.1);
   }
 
+  & .poster{
+    object-fit: cover;
+    transition: transform 0.55s ease;
+    cursor: pointer;
+  }
+
   @media (min-width: 580px) or (orientation: landscape)
     {
       width: 8em;
@@ -19,8 +25,8 @@ export const PosterContainer = styled.div`
     }
 `;
 
-export const Poster = styled(Image)`
-  object-fit: cover;
-  transition: transform 0.55s ease;
-  cursor: pointer;
-`;
+// export const Poster = styled(Image)`
+//   object-fit: cover;
+//   transition: transform 0.55s ease;
+//   cursor: pointer;
+// `;
