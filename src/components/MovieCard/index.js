@@ -10,7 +10,7 @@ const MovieCard = ({ imgPath, title, movieId }) => {
     return (
         <StyledRouterLink href={`movies/${movieId}`} >
             <PosterContainer>
-                <Poster
+                <img
                     src={imgUrl}
                     alt={PosterAltText}
                     layout='fill'
