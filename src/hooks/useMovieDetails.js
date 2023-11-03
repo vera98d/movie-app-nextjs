@@ -22,7 +22,7 @@ export const useMovieDetails = (movieInfo) => {
     }
 
     const formatBudget = (number) => {
-        if (typeof time !== 'number' || !number) {
+        if (!number || isNaN(Number(number))) {
             return "unknown";
         }
         return "$" + number.toLocaleString('pl');
