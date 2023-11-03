@@ -19,7 +19,7 @@ export const Overlay = styled.div`
     left:0;
     width:100%;
     min-height: 50vh;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
 `;
 
@@ -146,4 +146,29 @@ export const IconVotes = styled(MdHowToVote)`
     margin: auto;
     color: #FFC000;
     font-size: 1.4em;
+`;
+
+export const NoCoverPoster = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  height: 100%;
+  transition: transform 0.55s ease;
+  cursor: pointer;
+
+  & p{
+        font-size: .9rem;
+    }
+
+    & p, h2{
+        color: ${(props) => props.theme.colors.primaryBulue};
+        font-weight: bold;
+    }
+
+    & span{
+        margin-left: .1em;
+        color: ${(props) => props.theme.colors.secondaryBlue};
+    }
 `;
