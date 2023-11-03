@@ -20,15 +20,20 @@ import {
     DetailsContainerCol
 } from "../../components/GlobalComponents/styles";
 
+import { NoCoverPoster } from "../../components/GlobalComponents/styles";
+import { useMovieDetails } from "../../hooks/useMovieDetails";
+
+
 export async function getServerSideProps(context) {
     const { movieId } = context.query;
     const movieInfo = await movieListService.getMovieDetails(movieId);
 
-    const backdropPath = await movieInfo.backdrop_path;
-    const headerImgPath = movieListService.getOriginalPosterByMovieId(backdropPath);
+    const backdropPath = movieInfo.backdrop_path;
+    const headerImgPath = backdropPath ? movieListService.getOriginalPosterByMovieId(backdropPath) : null;
 
-    const posterPath = await movieInfo.poster_path;
-    const posterImgPath = movieListService.getOriginalPosterByMovieId(posterPath);
+    const posterPath = movieInfo.poster_path;
+    const posterImgPath = posterPath ? movieListService.getOriginalPosterByMovieId(posterPath) : null;
+
 
     return {
         props: {
@@ -46,35 +51,40 @@ const MovieDetails = ({ movieInfo, headerImgPath, posterImgPath }) => {
         description: `This page is dedicated to ${movieInfo.title} movie.`
     };
 
+    const movieInfoFormated = useMovieDetails(movieInfo);
+
     return (
         <>
             <Head metadata={pageMetadata} />
             <Container>
                 <HeaderStyled>
                     <HeaderImgContainer>
-                        <Img
-                            src={headerImgPath}
-                            alt={movieInfo.title}
-                            layout='fill'
-                            priority
-                        />
+                        {
+                            headerImgPath ?
+                                <Img
+                                    src={headerImgPath}
+                                    alt={movieInfo.title}
+                                    layout='fill'
+                                    priority
+                                />
+                                : null
+                        }
                     </HeaderImgContainer>
                     <Overlay2>
                         <OverlayContent2>
-                            <h2>{movieInfo.title}</h2>
+                            <h2>{movieInfoFormated.title}</h2>
                             <FlexRowContainer>
                                 <IconTime />
                                 <h5>
-                                    {parseInt(movieInfo.runtime / 60)}h
-                                    {movieInfo.runtime % 60}m
+                                    {movieInfoFormated.runTime}
                                 </h5>
-                                <h5>{movieInfo.release_date.substring(0, movieInfo.release_date.indexOf("-"))} </h5>
+                                <h5>{movieInfoFormated.releaseYear} </h5>
                             </FlexRowContainer>
                             <FlexRowContainer>
                                 <IconStar />
-                                <h4>{movieInfo.vote_average}</h4>
+                                <h4>{movieInfoFormated.votesAverage}</h4>
                                 <IconVotes />
-                                <h4>{movieInfo.vote_count}</h4>
+                                <h4>{movieInfoFormated.numberOfVotes}</h4>
                             </FlexRowContainer>
                         </OverlayContent2>
                     </Overlay2>
@@ -83,41 +93,41 @@ const MovieDetails = ({ movieInfo, headerImgPath, posterImgPath }) => {
                 <DetailsSection>
                     <FlexRowContainerLeft>
                         <PosterContainer>
-                            <Img
-                                src={posterImgPath}
-                                alt={movieInfo.title}
-                                layout='fill'
-                            />
+                            {
+                                posterImgPath ?
+                                    <Img
+                                        src={posterImgPath}
+                                        alt={movieInfo.title}
+                                        layout='fill'
+                                    />
+                                    :
+                                    <NoCoverPoster>
+                                        <h2>
+                                            Movie<span> DB</span>
+                                        </h2>
+                                    </NoCoverPoster>
+                            }
+
                         </PosterContainer>
                         <DetailsContainerCol>
-                            <p><span>Release date:</span> {movieInfo.release_date}</p>
-                            <p><span>Budget:</span> ${movieInfo.budget / 1000}k</p>
+                            <p><span>Release date:</span> {movieInfoFormated.releaseDate}</p>
+                            <p><span>Budget:</span> {movieInfoFormated.budget}</p>
                             <p>
                                 <span>Genres: </span>
-                                {movieInfo.genres.map((genre, index) =>
-                                    movieInfo.genres.length - 1 === index
-                                        ? `${genre.name}`
-                                        : `${genre.name}, `)}
+                                {movieInfoFormated.genres}
                             </p>
                             <p>
                                 <span>Production: </span>
-                                {movieInfo.production_companies.map((company, index) =>
-                                    movieInfo.production_companies.length - 1 === index
-                                        ? `${company.name}`
-                                        : `${company.name}, `)}
+                                {movieInfoFormated.production}
                             </p>
                             <p>
                                 <span>Countries: </span>
-                                {movieInfo.production_companies.map((country, index) =>
-                                    movieInfo.production_companies.length - 1 === index
-                                        ? `${country.name}`
-                                        : `${country.name}, `)}
+                                {movieInfoFormated.countries}
                             </p>
-
                         </DetailsContainerCol>
                     </FlexRowContainerLeft>
                     <Description>
-                        <p><span>Overview:</span> {movieInfo.overview}</p>
+                        <p><span>Overview:</span> {movieInfoFormated.overview}</p>
                     </Description>
                 </DetailsSection>
             </Container >
