@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle, theme } from '../styles/globalStyles';
 import Loader from "../components/Loader";
 import Header from "../components/Header";
+import { ScrollProvider } from '../context/scrollContext';
 
 export default function App({ Component, pageProps }) {
 
@@ -27,16 +28,18 @@ export default function App({ Component, pageProps }) {
   }, [router]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Header />
-          <Component {...pageProps} />
-        </>
-      )}
-    </ThemeProvider>
+    <ScrollProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <Header />
+            <Component {...pageProps} />
+          </>
+        )}
+      </ThemeProvider>
+    </ScrollProvider>
   )
 }
