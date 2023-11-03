@@ -4,7 +4,7 @@
 
 This project is a simple application for searching movies and finding their details.
 
-Live demo: [MovieApp Next](https://vera98d.github.io/movie-app-next/)
+Live demo: [MovieApp Next](https://movie-app-nextjs-three.vercel.app/)
 
 ## Used technologies:
 
@@ -13,6 +13,7 @@ Live demo: [MovieApp Next](https://vera98d.github.io/movie-app-next/)
 - [react-spinners-kit](https://www.npmjs.com/package/react-spinners-kit)
 - [react-responsive-carousel](https://www.npmjs.com/package/react-responsive-carousel)
 - [react-icons](https://react-icons.github.io/react-icons/)
+- [The Movie Database](https://developer.themoviedb.org/reference/intro/getting-started)
 
 ## Setup:
 
