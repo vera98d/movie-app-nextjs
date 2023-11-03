@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { OverlayContent, Overlay } from "../components/GlobalComponents/styles";
 
 export const Container = styled.main`
+  position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 93vh;
   margin: 0 auto;
   background: rgb(12,7,47);
   background: ${(props) => props.theme.colors.gradient};
@@ -76,11 +77,9 @@ export const Overlay2 = styled(Overlay)`
   
 `;
 
-
 export const OverlayContent2 = styled(OverlayContent)`
   width: 100%;
-  padding: .8em 1em;
-  
+  padding: .8em 1em;  
     
   & h4 {
     font-weight: normal;
@@ -88,7 +87,7 @@ export const OverlayContent2 = styled(OverlayContent)`
 
   & h5 {
     font-weight: normal;
-    color: rgba(255,255,255,0.75);
+    color: ${(props) => props.theme.colors.lightGrey};
   }
 
   & p {

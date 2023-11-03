@@ -4,6 +4,10 @@ export const theme = {
   colors: {
     primaryBulue: "#686cf8",
     secondaryBlue: "#39b8f3",
+    backgroundBlue: "rgba(37,22,80,1)",
+    lightTextBlue: "#6b81ed",
+    lightBlue: "#759fff",
+    lightGrey: "rgba(255,255,255,0.75)",
     gradient: "radial-gradient(circle, rgba(37,22,80,1) 0%, rgba(5,5,5,1) 84%)",
   },
 
@@ -26,8 +30,8 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body{
     font-family: "Roboto", sans-serif;
-    font-size: 18px;
     overflow-x: hidden;
+    background: radial-gradient(circle, rgba(37,22,80,1) 0%, rgba(5,5,5,1) 84%);
   }
 
   p {
