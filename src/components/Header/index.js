@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { HeaderStyled, LogoContainer } from "./styles";
 import MovieIcon from "../../../public/favicon.png";
 import { StyledRouterLink } from "../GlobalComponents/styles";
+import SearchComponent from '../SearchBar';
 
 const Header = () => {
     return (
@@ -14,6 +15,7 @@ const Header = () => {
                     </h3>
                 </LogoContainer>
             </StyledRouterLink>
+            <SearchComponent />
         </HeaderStyled>
     )
 }
