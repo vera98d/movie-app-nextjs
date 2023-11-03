@@ -84,13 +84,14 @@ export const FlexRowContainer = styled.div`
   }
 `;
 
-export const FlexRowContainerLeft = styled.div`
+export const FlexColContainer = styled.div`
     max-width: 1020px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: left;
-    gap: 1em;
+    flex-direction: column;
+    align-items: 'center';
+    justify-content: flex-start;
+    gap: .8em;
     padding: .8em .6em;
 
     @media (min-width: 720px) or (orientation: landscape)
@@ -101,30 +102,12 @@ export const FlexRowContainerLeft = styled.div`
     }
 `;
 
-export const FlexColContainer = styled(FlexRowContainerLeft)`
-    flex-direction: column;
-    align-items: 'center';
-    justify-content: flex-start;
-    gap: .8em;
-`;
-
 export const DetailsContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: 'center';
     justify-content: flex-start;
     gap: 1.3em;
-`;
-
-export const DetailsContainerCol = styled(DetailsContainer)`
-    flex-direction: column;
-    gap: .6em;
-    justify-content: center;
-    
-    & p{
-      display: inline-block;
-      }
-    
 `;
 
 export const IconStar = styled(AiTwotoneStar)`

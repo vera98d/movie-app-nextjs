@@ -9,16 +9,17 @@ import {
     PosterContainer,
     Description,
     HeaderImgContainer,
-    Img
+    Img,
+    DetailedInformation, DetailsSection2
 } from "../../styles/MovieDetails";
 import {
     FlexRowContainer,
     IconStar,
     IconTime,
     IconVotes,
-    FlexRowContainerLeft,
-    DetailsContainerCol
+
 } from "../../components/GlobalComponents/styles";
+import { MdOutlineNaturePeople } from 'react-icons/md';
 
 import { NoCoverPoster } from "../../components/GlobalComponents/styles";
 import { useMovieDetails } from "../../hooks/useMovieDetails";
@@ -91,44 +92,46 @@ const MovieDetails = ({ movieInfo, headerImgPath, posterImgPath }) => {
                 </HeaderStyled>
 
                 <DetailsSection>
-                    <FlexRowContainerLeft>
-                        <PosterContainer>
-                            {
-                                posterImgPath ?
-                                    <Img
-                                        src={posterImgPath}
-                                        alt={movieInfo.title}
-                                        layout='fill'
-                                    />
-                                    :
-                                    <NoCoverPoster>
-                                        <h2>
-                                            Movie<span> DB</span>
-                                        </h2>
-                                    </NoCoverPoster>
-                            }
+                    <PosterContainer>
+                        {
+                            posterImgPath ?
+                                <Img
+                                    src={posterImgPath}
+                                    alt={movieInfo.title}
+                                    layout='fill'
+                                />
+                                :
+                                <NoCoverPoster>
+                                    <h2>
+                                        Movie<span> DB</span>
+                                    </h2>
+                                </NoCoverPoster>
+                        }
 
-                        </PosterContainer>
-                        <DetailsContainerCol>
-                            <p><span>Release date:</span> {movieInfoFormated.releaseDate}</p>
-                            <p><span>Budget:</span> {movieInfoFormated.budget}</p>
-                            <p>
-                                <span>Genres: </span>
-                                {movieInfoFormated.genres}
-                            </p>
-                            <p>
-                                <span>Production: </span>
-                                {movieInfoFormated.production}
-                            </p>
-                            <p>
-                                <span>Countries: </span>
-                                {movieInfoFormated.countries}
-                            </p>
-                        </DetailsContainerCol>
-                    </FlexRowContainerLeft>
+                    </PosterContainer>
+
+                    <DetailedInformation>
+                        <p>Release date:</p>
+                        <p>{movieInfoFormated.releaseDate}</p>
+
+                        <p>Budget:</p>
+                        <p>{movieInfoFormated.budget}</p>
+
+                        <p>Genres: </p>
+                        <p>{movieInfoFormated.genres}</p>
+
+                        <p>Production: </p>
+                        <p>{movieInfoFormated.production}</p>
+
+                        <p>Countries: </p>
+                        <p> {movieInfoFormated.countries} </p>
+                    </DetailedInformation>
+
                     <Description>
-                        <p><span>Overview:</span> {movieInfoFormated.overview}</p>
+                        <p> <span><MdOutlineNaturePeople /></span> Plot description:</p>
+                        <p>{movieInfoFormated.overview}</p>
                     </Description>
+
                 </DetailsSection>
             </Container >
         </>

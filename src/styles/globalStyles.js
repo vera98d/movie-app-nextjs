@@ -9,6 +9,7 @@ export const theme = {
     lightBlue: "#759fff",
     lightGrey: "rgba(255,255,255,0.75)",
     gradient: "radial-gradient(circle, rgba(37,22,80,1) 0%, rgba(5,5,5,1) 84%)",
+    maxWidth: "1250px"
   },
 
   fontFamily: {

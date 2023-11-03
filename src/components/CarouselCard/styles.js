@@ -38,7 +38,7 @@ export const OverlayContent = styled.div`
     position:absolute;
     bottom:0;
     left:0;
-    width:60%;
+    width:90%;
     height: 40%;
     padding: 1.5em 1em;
     display:flex;

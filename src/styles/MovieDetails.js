@@ -7,9 +7,8 @@ export const Container = styled.main`
   width: 100%;
   min-height: 93vh;
   margin: 0 auto;
-  background: rgb(12,7,47);
   background: ${(props) => props.theme.colors.gradient};
-  padding-bottom: 2em;
+  padding-bottom: .8em;
 
   & span{
         font-weight: bold;
@@ -23,7 +22,7 @@ export const Container = styled.main`
   @media (min-width: 420px) or (orientation: landscape)
   {
       & p{
-      font-size: 1rem;
+        font-size: 1rem;
       }
   }
 `;
@@ -79,7 +78,10 @@ export const Overlay2 = styled(Overlay)`
 
 export const OverlayContent2 = styled(OverlayContent)`
   width: 100%;
-  padding: .8em 1em;  
+  max-width: ${(props) => props.theme.colors.maxWidth};
+  padding: .8em 1em; 
+  left: 50%;
+  transform: translateX(-50%);
     
   & h4 {
     font-weight: normal;
@@ -104,14 +106,9 @@ export const OverlayContent2 = styled(OverlayContent)`
   
   @media (min-width: 720px) or (orientation: landscape)
     {
-        left: 10%;
         bottom: 5%;
-    }
-`;
 
-export const DetailsSection = styled.section`
-  width: 100%;
-  margin: 0 auto;
+    }
 `;
 
 export const PosterContainer = styled.div`
@@ -141,14 +138,68 @@ export const PosterContainer = styled.div`
 
 `;
 
-export const Description = styled.div`
+export const DetailsSection = styled.div`
+  display: grid;
+  grid-template-columns: minmax(80px, auto) minmax(60%, 1fr);
+  grid-gap: .3em .6em;
+  max-width: ${(props) => props.theme.colors.maxWidth};
   margin: 0 auto;
-  max-width: 1050px;
-  padding: 0 1em;
+  padding: .8em;
+
+  & div:nth-child(3){
+    grid-column: 1 / 3;
+  }
+
+  & p:nth-child(odd) {
+    font-weight: bold;
+    color: ${(props) => props.theme.colors.lightTextBlue};
+  }
+   & span{
+    color: ${(props) => props.theme.colors.secondaryBlue};
+    font-size: 1.2rem;
+   }
+
+  @media (min-width: 720px) or (orientation: landscape)
+    {
+      grid-gap: .3em 1.2em;
+      padding-right: 1.6em;
+
+      & div:nth-child(1){
+        grid-row: 1 / 3;
+      }
+
+      & div:nth-child(2){
+        order: 2;
+        grid-row: 2 / 3;
+      }
+
+      & div:nth-child(3){
+        order: 1;
+        grid-column: auto;
+        grid-row: 1 / 2;
+      }
+
+    }
+
+`;
+
+export const DetailedInformation = styled.div`
+  display: grid;
+  grid-template-columns: minmax(80px, auto) minmax(60%, 1fr);
+  grid-gap: .6em .6em;
+  padding-right: .2em;
+  align-content: center;
+`;
+
+export const Description = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .4em;
+  justify-content: center;
   line-height: 130%;
 
  @media (min-width: 720px) or (orientation: landscape)
     {
-        padding: 0 2em;
+        padding: 0;
     }
 `;

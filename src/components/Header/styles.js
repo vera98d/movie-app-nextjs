@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
     width:100%;
-    max-width: 1450px;
+    max-width: ${(props) => props.theme.colors.maxWidth};
     height: 7vh;
     margin: 0em auto;
     padding: .8em 1.4em;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background: rgb(12,7,47);
     background: ${(props) => props.theme.colors.gradient};
