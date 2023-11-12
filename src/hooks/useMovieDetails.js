@@ -25,7 +25,7 @@ export const useMovieDetails = (movieInfo) => {
         if (!number || isNaN(Number(number))) {
             return "unknown";
         }
-        return "$" + number.toLocaleString('pl');
+        return "$" + number.toLocaleString('en-UK');
     }
 
     const formatDate = (date) => {
@@ -37,6 +37,14 @@ export const useMovieDetails = (movieInfo) => {
         const formatedDate = convertedDate.toLocaleString('en-UK', options);
 
         return formatedDate;
+    }
+
+    const formatYear = (date) => {
+        if (!date) {
+            return "unknown"
+        }
+        const formatedYear = date.substring(0, movieInfo.release_date.indexOf("-"));
+        return formatedYear;
     }
 
     const mapList = (list) => {
@@ -55,14 +63,14 @@ export const useMovieDetails = (movieInfo) => {
     const production = mapList(movieInfo.production_companies);
     const countries = mapList(movieInfo.production_countries);
     const releaseDate = formatDate(movieInfo.release_date);
+    const releaseYear = formatYear(movieInfo.release_date);
 
-    const releaseYear = movieInfo.release_date.substring(0, movieInfo.release_date.indexOf("-"));
     const overview = movieInfo.overview || "This movie doesn't have a plot description yet."
-    const votesAverage = movieInfo.vote_average || "0";
-    const numberOfVotes = movieInfo.vote_count || "0";
-
+    const votesAverage = movieInfo.vote_average || 0;
+    const numberOfVotes = movieInfo.vote_count || 0;
+    const title = movieInfo.title || "unknown";
     return {
-        title: movieInfo.title,
+        title,
         runTime,
         budget,
         genres,
