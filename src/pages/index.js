@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import MovieListHorizontal from "../components/MovieListHorizontal";
 import CarouselCard from "../components/CarouselCard";
 import { Container } from "../styles/Home";
-import Head from "../components/Head";
+import HeadComponent from "../components/HeadComponent";
 
 export async function getServerSideProps() {
   const [
@@ -48,7 +48,7 @@ const Home = ({ popularMovies, topRatedMovies, upcomingMovies, nowPlayingMovies 
 
   return (
     <>
-      <Head metadata={pageMetadata} />
+      <HeadComponent metadata={pageMetadata} />
       <Container>
         {carouselCards.length > 0 && (
           <Carousel

@@ -1,5 +1,5 @@
 import movieListService from "../../services/MovieListService";
-import Head from "../../components/Head";
+import HeadComponent from "../../components/HeadComponent";
 import {
     Container,
     HeaderStyled,
@@ -56,7 +56,7 @@ const MovieDetails = ({ movieInfo, headerImgPath, posterImgPath }) => {
 
     return (
         <>
-            <Head metadata={pageMetadata} />
+            <HeadComponent metadata={pageMetadata} />
             <Container>
                 <HeaderStyled>
                     <HeaderImgContainer>
