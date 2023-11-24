@@ -36,7 +36,7 @@ const SearchBar = () => {
     return (
         <>
             <Container>
-                <SearchIcon onClick={handleIconClick} />
+                <SearchIcon onClick={handleIconClick} data-testid="search-icon" />
                 <SearchBoxContainer isvisible={showSearchBox.toString()}>
                     <input
                         type="text"
@@ -47,7 +47,7 @@ const SearchBar = () => {
                         placeholder="Search The MovieDB"
                         onChange={handleInputTextChange}
                     />
-                    <CloseIcon onClick={handleIconClick} />
+                    <CloseIcon onClick={handleIconClick} data-testid="close-icon" />
                 </SearchBoxContainer >
             </Container>
             <SearchResults searchText={searchText} />
