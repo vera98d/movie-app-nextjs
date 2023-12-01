@@ -31,7 +31,7 @@ const SearchResults = ({ searchText }) => {
     }, [searchText]);
 
     return (
-        <Container isvisible={shwowResults.toString()}>
+        <Container isvisible={shwowResults.toString()} data-testid="results-container">
             {
                 searchResults.map(movie => {
                     const formatedMovieTitle = getTitleToDisplay(movie.title);
@@ -47,7 +47,7 @@ const SearchResults = ({ searchText }) => {
                                     movieId={movie.id}
                                     size="small"
                                 />
-                                <SearchResultDetails key={movie.id}>
+                                <SearchResultDetails key={movie.id} data-testid="result-details">
                                     <p>{formatedMovieTitle}</p>
                                     <p>
                                         <span>{movie.release_date.substring(0, 4)}</span>
